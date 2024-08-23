@@ -24,7 +24,7 @@
 
 1. **Create Superuser**:
     ```bash
-    docker-compose exec web python manage.py createsuperuser
+    docker-compose exec web python geo_project/manage.py createsuperuser
     ```
 
 2. **Make Migrations**:
