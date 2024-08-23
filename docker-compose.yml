@@ -1,0 +1,50 @@
+version: '3.8'
+services:
+  db:
+    image: postgis/postgis:latest
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+    ports:
+      - "5432:5432"
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - postgis
+
+
+
+  web:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - GDAL_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/libgdal.so
+    networks:
+      - postgis
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8989:8080
+    networks:
+      - postgis
+
+networks:
+  postgis:
+    driver: bridge
+
+volumes:
+  postgres_data: {}

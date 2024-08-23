@@ -1,0 +1,33 @@
+# Dockerfile
+
+FROM python:3.10
+
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    gdal-bin \
+    libgdal-dev \
+    netcat-openbsd \
+    && rm -rf /var/lib/apt/lists/*
+
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+ENV GDAL_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/libgdal.so
+
+# Copy entrypoint script
+COPY entrypoint.sh /app/
+
+# Make entrypoint script executable
+RUN chmod +x /app/entrypoint.sh
+
+# Set entrypoint script
+ENTRYPOINT ["/app/entrypoint.sh"]
+
+# Default command (not used because of ENTRYPOINT)
+CMD ["python", "geo_project/manage.py", "runserver", "0.0.0.0:8000"]
+

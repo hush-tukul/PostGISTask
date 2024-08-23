@@ -1,0 +1,31 @@
+# Python-specific
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+
+# Virtual environment
+venv/
+env/
+ENV/
+.venv/
+
+
+# Django-specific
+*.log
+media/
+staticfiles/
+
+
+# Environment variables and secrets
+.env
+
+
+# Ignore IDE configuration files
+.idea/
+
+# Ignore OS-specific files
+*.log
+*.tmp
+
