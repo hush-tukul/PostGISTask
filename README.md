@@ -43,7 +43,7 @@
 
 OPTIONAL
 3. **Make Migrations**:
-    ```bash
+    ```
     docker-compose exec web python geo_project/manage.py makemigrations
     ```
 
