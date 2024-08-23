@@ -14,16 +14,6 @@
     cd PostGISTask
     ```
 
-2. **Create a Virtual Environment** (if working outside Docker):
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-    ```
-
-3. **Install Dependencies**:
-    ```bash
-    pip install -r requirements.txt
-    ```
 
 4. **Build and Run Docker Containers**:
     ```bash
@@ -56,23 +46,10 @@
     docker-compose up -d
     ```
 
-### Production
-
-1. **Deploy to Production**:
-    ```bash
-    docker-compose -f docker-compose.prod.yml up -d
-    ```
-
 ## Rollback
 
 1. **Rollback Deployment**:
     ```bash
     docker-compose down
-    docker-compose -f docker-compose.prod.yml up -d
     ```
 
-## Troubleshooting
-
-- **Logs**: Check logs for errors.
-  ```bash
-  docker-compose logs
