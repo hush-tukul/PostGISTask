@@ -19,6 +19,7 @@ COPY . .
 
 ENV GDAL_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/libgdal.so
 
+CMD ["python", "geo_project/manage.py", "runserver", "0.0.0.0:8000"]
 
 
 
