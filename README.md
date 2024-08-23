@@ -26,13 +26,24 @@
     ```bash
     docker-compose exec web python geo_project/manage.py createsuperuser
     ```
+2. **Login in admin page**:
+   ```bash
+   http://localhost:8000/admin/login/
+   ```
 
-2. **Make Migrations**:
+**Now you can use swagger page**:
+      ```
+      http://localhost:8000/swagger/
+      ```
+
+
+OPTIONAL
+3. **Make Migrations**:
     ```bash
     docker-compose exec web python geo_project/manage.py makemigrations
     ```
 
-3. **Apply Migrations**:
+4. **Apply Migrations**:
     ```bash
     docker-compose exec web python geo_project/manage.py migrate
     ```
