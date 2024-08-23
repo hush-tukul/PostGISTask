@@ -34,6 +34,7 @@ services:
       - GDAL_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/libgdal.so
     command: >
       sh -c "
+      while ! nc -z db 5432; do sleep 1; done &&
       python geo_project/manage.py migrate &&
       echo 'Starting the Django development server...' &&
       exec python geo_project/manage.py runserver 0.0.0.0:8000
