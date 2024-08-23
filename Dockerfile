@@ -28,6 +28,4 @@ RUN chmod +x /app/entrypoint.sh
 # Set entrypoint script
 ENTRYPOINT ["/app/entrypoint.sh"]
 
-# Default command (not used because of ENTRYPOINT)
-CMD ["python", "geo_project/manage.py", "runserver", "0.0.0.0:8000"]
 

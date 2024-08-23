@@ -15,7 +15,6 @@ services:
       - postgis
 
 
-
   web:
     build: .
     volumes:
@@ -32,6 +31,13 @@ services:
       - DB_PORT=${DB_PORT}
       - SECRET_KEY=${SECRET_KEY}
       - GDAL_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/libgdal.so
+    command: >
+      sh -c "
+
+      python geo_project/manage.py migrate &&
+      echo 'Starting the Django development server...' &&
+      exec python geo_project/manage.py runserver 0.0.0.0:8000
+      "
     networks:
       - postgis
 
