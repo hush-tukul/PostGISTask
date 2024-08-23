@@ -19,13 +19,6 @@ COPY . .
 
 ENV GDAL_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/libgdal.so
 
-# Copy entrypoint script
-COPY entrypoint.sh /app/
 
-# Make entrypoint script executable
-RUN chmod +x /app/entrypoint.sh
-
-# Set entrypoint script
-ENTRYPOINT ["/app/entrypoint.sh"]
 
 
