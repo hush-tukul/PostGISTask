@@ -6,6 +6,10 @@
 - **Dependencies**: List in `requirements.txt` or similar.
 - **Access**: Necessary permissions for deployment.
 
+
+## IMPORTANT!!!
+- **Environment variables**: Create your own .env file and fill all variables. Use .envdist as example
+
 ## Setup
 
 1. **Clone the Repository**:
